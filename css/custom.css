@@ -1,13 +1,13 @@
 .row{
     padding: 5px 0px;
 }
-#desc p{
-    border-style: solid;
-    background-color: white;
-}
+
 body{
     background-color: darkgray
 }
 #transcript{
     background-color: white
+}
+#logo{
+    padding-bottom: 0;
 }
