@@ -1,0 +1,3 @@
+from gensim.summarization import summarize
+
+print(summarize('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet, enim nec ullamcorper dapibus, felis nisl condimentum neque, non bibendum nulla sem viverra metus. Maecenas venenatis justo eget orci luctus varius. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus tincidunt tempus aliquet. Aliquam erat volutpat. Maecenas et neque enim. Aliquam lobortis, urna id vulputate tincidunt, ante lacus convallis dui, nec varius nisl eros vitae sapien. Curabitur vitae quam ut quam dictum commodo vitae id odio.'))
