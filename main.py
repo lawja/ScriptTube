@@ -24,22 +24,27 @@ class chunk:
 		print(self.timestamp + " : " + self.content)
 
 @app.route('/')
-def index(_name="jake"):
-	return render_template("index.html",name=_name)
+def index(transcript=''):
+	return render_template("index.html",transcript=getSoup())
 
 def toPara(passage):
 	return '<p>' + passage + '</p>'
 
+def toLink(seconds,video_id):
+
 def getSoup():
-	page = urllib.request.urlopen('http://video.google.com/timedtext?lang=en&v=EcQ-6Zd1638').read()
+	video_id = 'EcQ-6Zd1638'
+	page = urllib.request.urlopen('http://video.google.com/timedtext?lang=en&v=' + video_id).read()
 
 	soup = BeautifulSoup(page, 'xml')
 
 	text_elements = soup.findAll('text')
 
-	summ(text_elements,60)
+	x = summ(text_elements,60,video_id)
 
-def summ(elems, lapse):
+	return x
+
+def summ(elems, lapse, video_id):
 	chunk_lapse = lapse
 
 	next_time = chunk_lapse + 1
@@ -71,13 +76,15 @@ def summ(elems, lapse):
 	s = re.sub(r'\b&#39;\b','\'',s)
 	data.add(chunk(last_time,toPara(s)))
 
+	return_string = ''
 	while(data.hasNext()):
 		x = data.pop()
-		#print(str(x.getTimestamp()) + " : " + x.getContent())
+		return_string += (str(x.getTimestamp()) + " : " + x.getContent() + '<br><br>')
+	return return_string
 
 def main():
 	getSoup()
+	toLink(10,video_id)
 
 if __name__ == '__main__':
 	main()
-
