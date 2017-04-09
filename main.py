@@ -25,7 +25,8 @@ class chunk:
 
 @app.route('/')
 def index():
-	return render_template("index.html",transcript='',embed_link="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1")
+	video_id = getVideoId('https://www.youtube.com/watch?v=M7lc1UVf-VE')
+	return render_template("index.html",transcript=getSoup(video_id),embed_link="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1")
 
 @app.route('/summarize', methods=["POST"])
 def getSummary():
