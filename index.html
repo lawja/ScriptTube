@@ -26,7 +26,7 @@
                     // Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
                     stringsElement: null,
                     // typing speed
-                    typeSpeed: 70,
+                    typeSpeed: 50,
                     // time before typing starts
                     startDelay: 500,
                     // backspacing speed
@@ -40,7 +40,7 @@
                     // false = infinite
                     loopCount: false,
                     // show cursor
-                    showCursor: true,
+                    showCursor: false,
                     // character for cursor
                     cursorChar: "|",
                     // attribute to type (null == text)
@@ -48,22 +48,27 @@
                     // either html or text
                     contentType: 'html',
                     // call when done callback function
-                    callback: function() {},
+                    callback: function() {
+                    },
                     // starting callback function before each string
                     preStringTyped: function() {},
                     //callback for every typed string
-                    onStringTyped: function() {},
+                    onStringTyped: function() {
+
+                    },
                     // callback for reset
                     resetCallback: function() {}
                 });
             });
+
+
     </script>
 </head>
 
 
 <body>
 
-<div class="container">
+<div class="container-fluid">
     <div class="text-center">
   <div class="row" id="logo">
     <div class="col-md-12">
@@ -90,7 +95,7 @@
     <div class="col-md-12" id="search">
       <form id="formSearch" />
         <input class="searchbar" id="txtSearch" type="text" name="search_bar" size="31" maxlength="285" placeholder="Enter the URL here"
-value="" style="left: 396px; top: 153px; height: 43px" />
+value="" style="left: 396px; top: 153px; height: 43px" autocomplete="off"; />
 
     </div>
   </div>
@@ -98,7 +103,7 @@ value="" style="left: 396px; top: 153px; height: 43px" />
   <div class="row">
   <div class="col-md-12" id="player">
     <iframe id="iframe"
-      width="640" height="360"
+      width="40%" height="360"
       src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1"
       frameborder="0"
       style="border: none; border-radius: 7px; margin-top: 20px;"
@@ -106,7 +111,7 @@ value="" style="left: 396px; top: 153px; height: 43px" />
   </div>
 </div>
   </div>
-  <div class="row" id="transcript" style="margin: auto;height: 300px; width: 675px; overflow: auto;">
+  <div class="row" id="transcript" style="margin: auto;height: 300px; width: 40%; overflow: auto; padding: 0;">
     <div class="col-md-12">Lorem ipsum dolor sit amet, lacus ornare et quis. Morbi eget laoreet commodo volutpat odio quis, fermentum ornare. In dui donec turpis at commodo, metus tortor, sed eros vestibulum amet lectus praesent nec. Molestie vestibulum sed accumsan pede, nunc nulla, vitae vitae tellus in, ante tempus torquent posuere amet curabitur. Et quam interdum hac lobortis praesent ligula, cras orci quam, blandit ad accumsan purus tortor sed wisi. Habitasse bibendum vivamus faucibus ipsum lorem. Vel animi augue quis amet, sapien natoque fermentum interdum fringilla magna, quisque vulputate lectus erat lacus voluptatem, ultrices in lacus donec quis malesuada quis, mi adipiscing amet curae enim.
 Nibh proin orci metus pulvinar eros, nullam id natoque vel rhoncus nam, mi turpis metus adipiscing placerat diam. Consequat velit tortor orci in metus, orci risus sed varius fames nulla, nullam pellentesque magna nascetur sed pellentesque aliquam, nisl ipsum. Neque blandit cursus ac vitae iaculis sagittis, nec parturient et mattis augue. Risus tempor egestas nibh, dis eu eleifend luctus magna, semper laoreet, venenatis quis at. Vivamus erat pede libero. Dolor aliquam augue. Arcu tempor nibh facilisi nam, eum integer nulla libero, risus elit a quia.
 Et eleifend sagittis, fugiat vivamus et neque nunc tristique luctus. Risus libero, quisque integer vel, sed pellentesque, sit ut at non lacus. Nisl nulla, arcu mauris justo non, ac mauris nisl pede ut quisque interdum, ipsum tellus integer nulla, pellentesque felis quam fringilla integer magna wisi. Phasellus enim turpis, condimentum justo proin in reiciendis vivamus, id non, non eu. Integer imperdiet vel eget vitae, odio pede, dolor dolor, tristique libero.
