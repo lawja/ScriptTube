@@ -125,9 +125,9 @@ input:-moz-placeholder {
 ::-webkit-scrollbar-thumb:vertical {
   /* This is the EXACT color of Mac OS scrollbars. 
      Yes, I pulled out digital color meter */
-  background: white;
+  background: rgba(255,255,255, 0.3);
   -webkit-border-radius: 100px;
-    opacity: 50%;   
+    opacity: 1.0;   
 }
 ::-webkit-scrollbar-thumb:vertical:active {
   background: rgba(0,0,0,0.61); /* Some darker color when you click it */
