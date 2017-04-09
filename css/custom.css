@@ -3,14 +3,68 @@
 }
 
 body{
-    background-color: #E87B67;
+    background-image: url(../background.jpg);
+    background-size: cover,cover, cover;   
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: center, center, center; 
+    background-color: transparent, #43d7e8, transparent;
 }
 
+@font-face {
+    font-family: pacifico;
+    src: url(../Pacifico-Regular.ttf);
+}
 
+@font-face {
+    font-family: cutive;
+    src: url(../CutiveMono-Regular.ttf);
+}
+
+#title{
+	font-size: 55px;
+	color: white;
+    font-family: pacifico;
+}
+
+#desc{
+    font-size: 24px;
+    padding-bottom: 5px;
+    color: white;
+    font-family: cutive;
+}
 
 #transcript{
-    background-color: white
+	margin-top: 20px;
+    background-color: none;
+    margin-bottom: 40px;
+    font-size: 20px;
+    color: white;
 }
+
+#ilogo{
+	width: 400px;
+	height: auto;
+}
+
 #logo{
     padding-bottom: 0;
+}
+
+.searchbar{
+	width: 56%;
+	border-radius: 8px;
+	size: 20px;
+}
+
+::-webkit-input-placeholder {
+	text-align: center; 
+}
+::-moz-placeholder { 
+	text-align: center; 
+} 
+:-ms-input-placeholder { 
+	text-align: center; 
+}
+input:-moz-placeholder { 
+	text-align: center; 
 }
