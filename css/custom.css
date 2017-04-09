@@ -4,9 +4,9 @@
 
 body{
     background-image: url(../background.jpg);
-    background-size: cover,cover, cover;   
+    background-size: cover,cover, cover;
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: center, center, center; 
+    background-position: center, center, center;
     background-color: transparent, #43d7e8, transparent;
 }
 
@@ -59,6 +59,7 @@ body{
 }
 
 ::-webkit-input-placeholder {
+
 	text-align: center; 
     font-size: 18px;
     font-family: fantasy;
@@ -84,6 +85,36 @@ input:-moz-placeholder {
   /* This is more usable for users trying to click it. */
   background-color: rgba(0,0,0,0);
   -webkit-border-radius: 100px;
+
+	text-align: center;
+}
+::-moz-placeholder {
+	text-align: center;
+}
+:-ms-input-placeholder {
+	text-align: center;
+}
+input:-moz-placeholder {
+	text-align: center;
+}
+
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    overflow: hidden;
+
+}
+
+.videoWrapper iframe {
+    position: absolute;
+    top: 17%;
+    left: 17%;
+    width: 66%;
+    height: 66%;
+
 }
 /* hover effect for both scrollbar area, and scrollbar 'thumb' */
 ::-webkit-scrollbar:hover {
