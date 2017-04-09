@@ -93,8 +93,8 @@
       </form> -->
       <div class="row">
         <div class="col-md-12" id="search">
-          <form id="formSearch" />
-          <input class="searchbar" id="txtSearch" type="text" name="search_bar" size="31" maxlength="285" placeholder="Enter the URL here" value="" style="left: 396px; top: 153px; height: 43px"/>
+          <form id="formSearch" action="{{ url_for('summarize') }}" method="post"/>
+          <input class="searchbar" id="txtSearch" type="text" name="link" size="31" maxlength="285" placeholder="Enter the URL here" value="" style="left: 396px; top: 153px; height: 43px"/>
         </div>
       </div>
 

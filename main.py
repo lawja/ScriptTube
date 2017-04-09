@@ -24,27 +24,44 @@ class chunk:
 		print(self.timestamp + " : " + self.content)
 
 @app.route('/')
-def index(transcript=''):
-	return render_template("index.html",transcript=getSoup())
+def index():
+	return render_template("index.html",transcript='')
+
+@app.route('/summarize', methods=["POST"])
+def getSummary():
+	video_link = request.form['link']
+	if(video_link != None and ('youtu.be/' in video_link) or ('youtube.com/watch?v=' in video_link)):
+		getVideoId(video_link)
+		return render_template("index.html", transcript=getSoup())
+
+def getVideoId(video_link):
+	if(video_link != None and ('youtu.be/' in video_link) or ('youtube.com/watch?v=' in video_link)):
+		beginId = video_link.index('?v=')
+		video_id = video_link[beginId+3:len(video_link)]
+		return video_id
+	else:
+		return None
 
 def toPara(passage):
 	return '<p>' + passage + '</p>'
 
 def toLink(seconds,video_id):
+	link = 'https://www.youtube.com/watch?v=' + video_id + '&feature=youtu.be&t=' + str(int(seconds))
+	return '<a href=\"' + link + '\" target=\"_blank\"">Go to this part in the video</a>' 
 
-def getSoup():
-	video_id = 'EcQ-6Zd1638'
+def getSoup(_video_id):
+	video_id = _video_id
 	page = urllib.request.urlopen('http://video.google.com/timedtext?lang=en&v=' + video_id).read()
 
 	soup = BeautifulSoup(page, 'xml')
 
 	text_elements = soup.findAll('text')
 
-	x = summ(text_elements,60,video_id)
+	x = summ_it(text_elements,60,video_id)
 
 	return x
 
-def summ(elems, lapse, video_id):
+def summ_it(elems, lapse, video_id):
 	chunk_lapse = lapse
 
 	next_time = chunk_lapse + 1
@@ -64,7 +81,7 @@ def summ(elems, lapse, video_id):
 			s = re.sub(r'\b\.,\b',',',s)
 			s = summarize(s)
 			s = re.sub(r'\b&#39;\b','\'',s)
-			c = chunk(last_time,toPara(s))
+			c = chunk(toLink(last_time,video_id),toPara(s))
 			last_time = float(element['start'])
 			data.add(c)
 			s = ''
@@ -74,17 +91,16 @@ def summ(elems, lapse, video_id):
 	s = re.sub(r'\b\.,\b',',',s)
 	s = summarize(s)
 	s = re.sub(r'\b&#39;\b','\'',s)
-	data.add(chunk(last_time,toPara(s)))
+	data.add(chunk(toLink(last_time,video_id),toPara(s)))
 
 	return_string = ''
 	while(data.hasNext()):
 		x = data.pop()
-		return_string += (str(x.getTimestamp()) + " : " + x.getContent() + '<br><br>')
+		return_string += (str(x.getTimestamp()) + x.getContent() + '<br>')
 	return return_string
 
 def main():
-	getSoup()
-	toLink(10,video_id)
+	print(getVideoId('https://www.youtube.com/watch?v=5aP9Bl9hcqI'))
 
 if __name__ == '__main__':
 	main()
