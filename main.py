@@ -37,9 +37,9 @@ def getSummary():
 		try:
 			return render_template("index.html", transcript=getSoup(video_id), embed_link="https://www.youtube.com/embed/" + video_id + "?enablejsapi=1")
 		except:
-			return render_template("index.html", transcript='Uh Oh! Looks like that video isn\'t supported yet', embed_link="//giphy.com/embed/uPTp0I1c3sfQs")
+			return render_template("index.html", transcript='<p style="text-align: center;">Uh Oh! Looks like that input isn\'t working!</p>', embed_link="//giphy.com/embed/uPTp0I1c3sfQsg")
 	else:
-		return render_template("index.html", transcript='Uh Oh! Looks like that video isn\'t supported yet', embed_link="//giphy.com/embed/uPTp0I1c3sfQs")
+		return render_template("index.html", transcript='<p style="text-align: center;">Uh Oh! Looks like that input isn\'t working!</p>', embed_link="//giphy.com/embed/uPTp0I1c3sfQs")
 
 def getVideoId(video_link):
 	if(video_link != None and ('youtu.be/' in video_link) or ('youtube.com/watch?v=' in video_link)):
