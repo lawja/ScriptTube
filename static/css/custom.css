@@ -45,13 +45,11 @@ body{
 #transcript{
 	
     background-color: none;
-    margin-bottom: 40px;
     font-size: 24px;
     color: white;
     font-family: cutive;
     padding: 0;
     height: 520px;
-   
     overflow: auto;
     display: inline-block;
 
