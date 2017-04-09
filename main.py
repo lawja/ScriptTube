@@ -25,14 +25,17 @@ class chunk:
 
 @app.route('/')
 def index():
-	return render_template("index.html",transcript='')
+	return render_template("index.html",transcript='',embed_link="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1")
 
 @app.route('/summarize', methods=["POST"])
 def getSummary():
 	video_link = request.form['link']
 	if(video_link != None and ('youtu.be/' in video_link) or ('youtube.com/watch?v=' in video_link)):
-		getVideoId(video_link)
-		return render_template("index.html", transcript=getSoup())
+		video_id = getVideoId(video_link)
+		print("https://www.youtube.com/embed/" + video_id + "?enablejsapi=1")
+		return render_template("index.html", transcript=getSoup(video_id), embed_link="https://www.youtube.com/embed/" + video_id + "?enablejsapi=1")
+	else:
+		return render_template("index.html", transcript='Uh Oh! Look like that video isn\'t supported yet', embed_link="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1")
 
 def getVideoId(video_link):
 	if(video_link != None and ('youtu.be/' in video_link) or ('youtube.com/watch?v=' in video_link)):
@@ -100,7 +103,8 @@ def summ_it(elems, lapse, video_id):
 	return return_string
 
 def main():
-	print(getVideoId('https://www.youtube.com/watch?v=5aP9Bl9hcqI'))
+	video_id = getVideoId('https://www.youtube.com/watch?v=M7lc1UVf-VE')
+	print(getSoup(video_id))
 
 if __name__ == '__main__':
 	main()

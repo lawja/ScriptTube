@@ -93,14 +93,14 @@
       </form> -->
       <div class="row">
         <div class="col-md-12" id="search">
-          <form id="formSearch" action="{{ url_for('summarize') }}" method="post"/>
-          <input class="searchbar" id="txtSearch" type="text" name="link" size="31" maxlength="285" placeholder="Enter the URL here" value="" style="left: 396px; top: 153px; height: 43px"/>
+          <form id="formSearch" action="{{ url_for('getSummary') }}" method="post"/>
+          <input class="searchbar" id="txtSearch" name="link" type="text" size="31" maxlength="285" placeholder="Enter the URL here" value="" style="left: 396px; top: 153px; height: 43px"/>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12" id="player">
-          <iframe id="iframe" width="640" height="360" src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1" frameborder="0" style="border: none; border-radius: 7px; margin-top: 20px;"></iframe>
+          <iframe id="iframe" width="640" height="360" src="{{ embed_link }}" frameborder="0" style="border: none; border-radius: 7px; margin-top: 20px;"></iframe>
         </div>
       </div>
     </div>
