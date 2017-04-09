@@ -44,7 +44,10 @@ body{
     font-size: 24px;
     color: white;
     font-family: cutive;
-
+    padding: 0;
+    height: 520px;
+    width: 100%;
+    overflow: auto;
 
 
 }
@@ -63,6 +66,9 @@ body{
 	border-radius: 4px;
 	size: 20px;
   border-style: none;
+  left: 396px;
+  top: 153px;
+  height: 43px
 
 }
 input[type="text"]
@@ -159,7 +165,7 @@ overflow: auto;
 border: solid black 1px;
 }
 .myIframe iframe {
-position: relative;
+position: absolute;
 top: 0;
 left: 0;
 width: 100%;
