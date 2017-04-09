@@ -2,8 +2,11 @@ from bs4 import BeautifulSoup
 import urllib.request
 import re
 from gensim.summarization import summarize
+from flask import Flask, redirect, render_template, request, session, url_for
 
 import LinkedLists as ll
+
+app = Flask(__name__,template_folder='templates')
 
 class chunk:
 
@@ -19,6 +22,10 @@ class chunk:
 
 	def __str__(self):
 		print(self.timestamp + " : " + self.content)
+
+@app.route('/')
+def index(_name="jake"):
+	return render_template("index.html",name=_name)
 
 def toPara(passage):
 	return '<p>' + passage + '</p>'
@@ -66,7 +73,7 @@ def summ(elems, lapse):
 
 	while(data.hasNext()):
 		x = data.pop()
-		print(str(x.getTimestamp()) + " : " + x.getContent())
+		#print(str(x.getTimestamp()) + " : " + x.getContent())
 
 def main():
 	getSoup()

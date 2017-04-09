@@ -62,6 +62,11 @@
 
 
 <body>
+{% if name %}
+  <h1>Hello, {{ name }}!</h1>
+{% else %}
+  <h1>Hello!</h1>
+{% endif %}
 
 <div class="container">
     <div class="text-center">
