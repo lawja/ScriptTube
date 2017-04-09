@@ -4,9 +4,9 @@
 
 body{
     background-image: url(../background.jpg);
-    background-size: cover,cover, cover;   
+    background-size: cover,cover, cover;
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: center, center, center; 
+    background-position: center, center, center;
     background-color: transparent, #43d7e8, transparent;
 }
 
@@ -57,14 +57,34 @@ body{
 }
 
 ::-webkit-input-placeholder {
-	text-align: center; 
+	text-align: center;
 }
-::-moz-placeholder { 
-	text-align: center; 
-} 
-:-ms-input-placeholder { 
-	text-align: center; 
+::-moz-placeholder {
+	text-align: center;
 }
-input:-moz-placeholder { 
-	text-align: center; 
+:-ms-input-placeholder {
+	text-align: center;
+}
+input:-moz-placeholder {
+	text-align: center;
+}
+
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    overflow: hidden;
+
+}
+
+.videoWrapper iframe {
+    position: absolute;
+    top: 17%;
+    left: 17%;
+    width: 66%;
+    height: 66%;
+
+
 }
