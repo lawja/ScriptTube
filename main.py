@@ -45,9 +45,6 @@ def getVideoId(video_link):
 	else:
 		return None
 
-def toPara(passage):
-	return '<p>' + passage + '</p>'
-
 def toLink(seconds,video_id):
 	link = 'https://www.youtube.com/watch?v=' + video_id + '&feature=youtu.be&t=' + str(int(seconds))
 	return '<a href=\"' + link + '\" target=\"_blank\"">Go to this part in the video</a>' 
