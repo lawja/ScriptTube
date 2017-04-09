@@ -3,22 +3,22 @@
 }
 
 body{
-    background-image: url(../background.jpg);
-    background-size: cover,cover, cover;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: center, center, center;
-    background-color: transparent, #43d7e8, transparent;
+    background-image: url(../css/img/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fb9f35;
     overflow-y: none;
 }
 
 @font-face {
     font-family: pacifico;
-    src: url(../Pacifico-Regular.ttf);
+    src: url(../css/fonts/Pacifico-Regular.ttf);
 }
 
 @font-face {
     font-family: cutive;
-    src: url(../CutiveMono-Regular.ttf);
+    src: url(../css/fonts/CutiveMono-Regular.ttf);
 }
 
 #title{
