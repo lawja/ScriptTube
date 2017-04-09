@@ -11,6 +11,10 @@ body{
     overflow-y: none;
 }
 
+#main{
+  padding-top: 5%;
+}
+
 @font-face {
     font-family: pacifico;
     src: url(../css/fonts/Pacifico-Regular.ttf);
@@ -40,12 +44,14 @@ body{
     font-size: 24px;
     color: white;
     font-family: cutive;
-    padding-left: 0;
-    padding-right: 0;
+
 
 
 }
 
+#iframe{
+  margin: 0;
+}
 
 #ilogo{
 	width: 400px;
@@ -107,22 +113,8 @@ input:-moz-placeholder {
 }
 
 
-.videoWrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 20px;
-    height: 0;
-    overflow: hidden;
 
-}
 
-.videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-}
 body::-webkit-scrollbar {
     display: none;
 }
@@ -144,5 +136,32 @@ div ::-webkit-scrollbar-thumb:vertical:active {
   -webkit-border-radius: 100px;
 }
 
+
+.transcriptWrap{
+  width: 688.5px;
+  height: 525px;
+}
+
 background: linear-gradient(45deg, white, silver);
 min-height: 100%;
+
+
+
+
+
+.myIframe {
+position: relative;
+padding-bottom: 65.25%;
+padding-top: 30px;
+height: 0;
+overflow: auto;
+-webkit-overflow-scrolling:touch; //<<--- THIS IS THE KEY
+border: solid black 1px;
+}
+.myIframe iframe {
+position: relative;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
