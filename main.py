@@ -23,44 +23,54 @@ class chunk:
 def toPara(passage):
 	return '<p>' + passage + '</p>'
 
-page = urllib.request.urlopen('http://video.google.com/timedtext?lang=en&v=EcQ-6Zd1638').read()
+def getSoup():
+	page = urllib.request.urlopen('http://video.google.com/timedtext?lang=en&v=EcQ-6Zd1638').read()
 
-soup = BeautifulSoup(page, 'xml')
+	soup = BeautifulSoup(page, 'xml')
 
-t = soup.findAll('text')
+	text_elements = soup.findAll('text')
 
-chunk_lapse = 60
+	summ(text_elements,60)
 
-next_time = 60
+def summ(elems, lapse):
+	chunk_lapse = lapse
 
-data = ll.LinkedList()
+	next_time = chunk_lapse + 1
 
-s = ''
+	data = ll.LinkedList()
 
-y = 0
+	s = ''
 
-last_time = 0
+	y = 0
 
-for e in t:
-	current_time = float(e['start']);
-	if(not(current_time <= next_time)):
-		next_time = float(e['start']) + float(chunk_lapse)
-		s = re.sub(r'\b\.,\b',',',s)
-		s = summarize(s)
-		s = re.sub(r'\b&#39;\b','\'',s)
-		c = chunk(last_time,toPara(s))
-		last_time = float(e['start'])
-		data.add(c)
-		s = ''
-	el = re.sub(r'\n',' ',e.text)
-	s +=  el + ' '
+	last_time = 0
 
-s = re.sub(r'\b\.,\b',',',s)
-s = summarize(s)
-s = re.sub(r'\b&#39;\b','\'',s)
-data.add(chunk(last_time,toPara(s)))
+	for element in elems:
+		current_time = float(element['start']);
+		if(not(current_time <= next_time)):
+			next_time = float(element['start']) + float(chunk_lapse)
+			s = re.sub(r'\b\.,\b',',',s)
+			s = summarize(s)
+			s = re.sub(r'\b&#39;\b','\'',s)
+			c = chunk(last_time,toPara(s))
+			last_time = float(element['start'])
+			data.add(c)
+			s = ''
+		temp_elem = re.sub(r'\n',' ',element.text)
+		s +=  temp_elem + ' '
 
-while(data.hasNext()):
-	x = data.pop()
-	print(str(x.getTimestamp()) + " : " + x.getContent())
+	s = re.sub(r'\b\.,\b',',',s)
+	s = summarize(s)
+	s = re.sub(r'\b&#39;\b','\'',s)
+	data.add(chunk(last_time,toPara(s)))
+
+	while(data.hasNext()):
+		x = data.pop()
+		print(str(x.getTimestamp()) + " : " + x.getContent())
+
+def main():
+	getSoup()
+
+if __name__ == '__main__':
+	main()
 
