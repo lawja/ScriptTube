@@ -33,7 +33,6 @@ def getSummary():
 	video_link = request.form['link']
 	if(video_link != None and ('youtu.be/' in video_link) or ('youtube.com/watch?v=' in video_link)):
 		video_id = getVideoId(video_link)
-		print("https://www.youtube.com/embed/" + video_id + "?enablejsapi=1")
 		try:
 			return render_template("index.html", transcript=getSoup(video_id), embed_link="https://www.youtube.com/embed/" + video_id + "?enablejsapi=1")
 		except:
@@ -86,7 +85,6 @@ def summ_it(elems, lapse, video_id):
 		if(not(current_time <= next_time)):
 			next_time = float(element['start']) + float(chunk_lapse)
 			s = re.sub(r'\b\.,\b',',',s)
-			print("\n" + str(last_time) + " : \n" + s)
 			s = summarize(s)
 			s = re.sub(r'\b&#39;\b','\'',s)
 			c = chunk(toLink(last_time,video_id),toPara(s))
@@ -97,9 +95,7 @@ def summ_it(elems, lapse, video_id):
 		s +=  temp_elem + ' '
 
 	try:
-		print("\n\nflag\n\n")
 		s = re.sub(r'\b\.,\b',',',s)
-		print("\n" + str(last_time) + " : \n" + s)
 		s = summarize(s)
 		s = re.sub(r'\b&#39;\b','\'',s)
 		data.add(chunk(toLink(last_time,video_id),toPara(s)))
@@ -115,8 +111,6 @@ def summ_it(elems, lapse, video_id):
 
 def main():
 	video_id = getVideoId('https://www.youtube.com/watch?v=Qymp_VaFo9M')
-	print(getSoup(video_id))
-	#summarize('is Dr. Ranjit Bhagwat. Our director and editor is Nicholas Jenkins, our sound designer is Michael Aranda, and the graphics team is Thought Cafe.')
 
 if __name__ == '__main__':
 	main()
